@@ -1,0 +1,13 @@
+#!/bin/bash
+
+x=`grep -n $1 < headandtail | cut -c 1 | head -n 1`
+
+echo $x
+
+y=`grep -n $2 < headandtail | cut -c 1 | head -n 1`
+
+echo $y
+
+z=$((y-x+1))
+
+head -n $y headandtail | tail -n $z
