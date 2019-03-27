@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+if [ $# != 1 ] #there should only be one argument inputted
+then
+	echo usage: labtenparttwo course number
+else
+	main=(`grep $1 courses | cut -f 1`) #stores the 3 digit numbers into an array
+
+
+	if [[ $main == "" ]] #main array should not be empty
+	then
+		echo course number $1 not found
+	
+	else
+		for i in ${main[*]} #output all the emails with matching 3 digit numbers
+		do
+			echo `grep $i emails | cut -f 2`
+		done
+	fi
+fi

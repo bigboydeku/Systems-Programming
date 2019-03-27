@@ -1,0 +1,17 @@
+#!/bin/bash
+
+x=(`ls`)  # store results in x
+echo practice: shell command and array
+echo list all directories and files in current directory: ${x[*]}
+
+
+echo total number of files and directories: ${#x[*]}
+echo the first element in this list: $x
+
+
+echo all elements in this list:
+
+for i in ${x[*]}
+	do
+		echo $i
+	done

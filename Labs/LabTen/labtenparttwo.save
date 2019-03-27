@@ -1,0 +1,43 @@
+
+
+
+#!/bin/bash
+
+
+course = $1
+
+main=(`grep -w  $course courses | cut -f 1 -d " "`)
+
+people=(`cut -f 1 -d " " < emails`)
+
+emaillist=`cat emails`
+y=0
+
+if [ "${#main[*]}" = "0" ]
+then
+	echo $course not found
+else
+	for i in ${main[*]}
+	do
+		for j in ${people[*]}
+		do
+			if ["$i" = "$j"]
+			then
+				for k in emaillist[*]
+				do
+					if ["$y" = "1"]
+					then
+						echo $k
+						y=0
+					fi
+					if ["$k" = "$i"]
+					then
+						y=1
+					fi
+				done
+			fi
+		done
+	done
+fi
+
+						
